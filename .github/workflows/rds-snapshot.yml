@@ -1,11 +1,11 @@
-name: Terraform
-
 on:
-  workflow_dispatch:
+  push:
+    branches:
+      - main  # Triggers the workflow on pushes to the main branch
 
 permissions:
-  id-token: write
-  contents: read
+  id-token: write # Mandatory for requesting the AWS OIDC JWT token
+  contents: read  # Required to checkout the repository code
 
 env:
   AWS_REGION: us-east-1
