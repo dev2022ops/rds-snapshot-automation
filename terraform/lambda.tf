@@ -20,7 +20,7 @@ resource "aws_lambda_function" "create_snapshot" {
 
   environment {
     variables = {
-      DB_INSTANCE_ID = "rds-backup-lambda"
+      DB_INSTANCE_ID = "rds-backup-lab"
     }
   }
 }
