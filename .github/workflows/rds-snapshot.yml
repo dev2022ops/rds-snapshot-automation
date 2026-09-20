@@ -11,20 +11,20 @@ env:
   AWS_REGION: us-east-1
 
 jobs:
-  terraform:
-    name: Terraform Plan
+  ConnectAndDeploy:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout
+      # 1. Checkout repository code
+      - name: Git checkout
         uses: actions/checkout@v4
 
-      - name: Configure AWS credentials
+      # 2. Authenticate with AWS via OIDC
+      - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          #role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
           role-to-assume: arn:aws:iam::779638603313:role/GitHubAction-AssumeRoleWithAction
-          aws-region: us-east-1
+          aws-region: us-east-1 # Change to your preferred AWS region
+
 
       - name: Verify AWS identity
         run: aws sts get-caller-identity
